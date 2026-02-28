@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust - Открой мир для себя</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=2021&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-blur {
+            backdrop-filter: blur(10px);
+        }
+        .destination-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .destination-card img {
+            transition: transform 0.5s ease;
+        }
+        .destination-card:hover img {
+            transform: scale(1.1);
+        }
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur bg-white/90 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <i class="fas fa-compass text-3xl text-indigo-600 mr-2"></i>
+                    <span class="font-display text-2xl font-bold text-gray-900">Wanderlust</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#destinations" class="text-gray-700 hover:text-indigo-600 font-medium transition">Направления</a>
+                    <a href="#tours" class="text-gray-700 hover:text-indigo-600 font-medium transition">Туры</a>
+                    <a href="#hotels" class="text-gray-700 hover:text-indigo-600 font-medium transition">Отели</a>
+                    <a href="#about" class="text-gray-700 hover:text-indigo-600 font-medium transition">О нас</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-700 hover:text-indigo-600"><i class="fas fa-search text-lg"></i></button>
+                    <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition font-medium">Войти</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen flex items-center justify-center relative">
+        <div class="text-center text-white px-4 max-w-5xl mx-auto">
+            <h1 class="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Открой для себя<br>магию путешествий
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-gray-200 font-light">
+                Исследуйте неизведанные уголки мира с комфортом и стилем
+            </p>
+            
+            <!-- Search Box -->
+            <div class="bg-white rounded-2xl p-4 shadow-2xl max-w-4xl mx-auto transform hover:scale-105 transition duration-300">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="relative">
+                        <i class="fas fa-map-marker-alt absolute left-4 top-4 text-gray-400"></i>
+                        <input type="text" placeholder="Куда хотите поехать?" class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 search-input outline-none text-gray-800">
+                    </div>
+                    <div class="relative">
+                        <i class="fas fa-calendar absolute left-4 top-4 text-gray-400"></i>
+                        <input type="text" placeholder="Дата заезда" onfocus="(this.type='date')" class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 search-input outline-none text-gray-800">
+                    </div>
+                    <div class="relative">
+                        <i class="fas fa-user absolute left-4 top-4 text-gray-400"></i>
+                        <select class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 search-input outline-none text-gray-800 appearance-none bg-white">
+                            <option>1 путешественник</option>
+                            <option>2 путешественника</option>
+                            <option>Семья</option>
+                            <option>Группа</option>
+                        </select>
+                    </div>
+                    <button class="bg-indigo-600 text-white py-3 rounded-xl hover:bg-indigo-700 transition font-semibold text-lg flex items-center justify-center gap-2">
+                        <i class="fas fa-search"></i> Найти
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-3xl"></i>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section id="destinations" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-indigo-600 font-semibold tracking-wider uppercase text-sm">Популярные направления</span>
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 mt-3">Лучшие места для отдыха</h2>
+            <p class="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">Выберите идеальное направление из нашей подборки самых посещаемых мест этого года</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
+                <div class="relative h-80 overflow-hidden rounded-3xl">
+                    <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kyoto" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.9
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-white font-display text-2xl font-bold">Киото, Япония</h3>
+                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Традиционная культура</p>
+                    </div>
+                </div>
+                <div class="p-6 bg-white rounded-b-3xl">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-gray-500 text-sm">от</p>
+                            <p class="text-2xl font-bold text-indigo-600">$1,299</p>
+                        </div>
+                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
+                <div class="relative h-80 overflow-hidden rounded-3xl">
+                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Santorini" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.8
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-white font-display text-2xl font-bold">Санторини, Греция</h3>
+                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Романтический отдых</p>
+                    </div>
+                </div>
+                <div class="p-6 bg-white rounded-b-3xl">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-gray-500 text-sm">от</p>
+                            <p class="text-2xl font-bold text-indigo-600">$1,599</p>
+                        </div>
+                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
+                <div class="relative h-80 overflow-hidden rounded-3xl">
+                    <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bali" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.9
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-white font-display text-2xl font-bold">Бали, Индонезия</h3>
+                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Тропический рай</p>
+                    </div>
+                </div>
+                <div class="p-6 bg-white rounded-b-3xl">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-gray-500 text-sm">от</p>
+                            <p class="text-2xl font-bold text-indigo-600">$899</p>
+                        </div>
+                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
+                <div class="relative h-80 overflow-hidden rounded-3xl">
+                    <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="New York" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.7
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-white font-display text-2xl font-bold">Нью-Йорк, США</h3>
+                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Город мечты</p>
+                    </div>
+                </div>
+                <div class="p-6 bg-white rounded-b-3xl">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-gray-500 text-sm">от</p>
+                            <p class="text-2xl font-bold text-indigo-600">$1,199</p>
+                        </div>
+                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
+                <div class="relative h-80 overflow-hidden rounded-3xl">
+                    <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Swiss Alps" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i> 5.0
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-white font-display text-2xl font-bold">Швейцарские Альпы</h3>
+                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Горнолыжный курорт</p>
+                    </div>
+                </div>
+                <div class="p-6 bg-white rounded-b-3xl">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-gray-500 text-sm">от</p>
+                            <p class="text-2xl font-bold text-indigo-600">$2,199</p>
+                        </div>
+                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
+                <div class="relative h-80 overflow-hidden rounded-3xl">
+                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dubai" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.8
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-white font-display text-2xl font-bold">Дубай, ОАЭ</h3>
+                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Роскошь и шопинг</p>
+                    </div>
+                </div>
+                <div class="p-6 bg-white rounded-b-3xl">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-gray-500 text-sm">от</p>
+                            <p class="text-2xl font-bold text-indigo-600">$1,799</p>
+                        </div>
+                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-indigo-900 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6 float-animation" style="animation-delay: 0s;">
+                    <i class="fas fa-globe-europe text-5xl mb-4 text-indigo-300"></i>
+                    <h3 class="text-xl font-bold mb-2">100+ стран</h3>
+                    <p class="text-indigo-200">Огромный выбор направлений по всему миру</p>
+                </div>
+                <div class="p-6 float-animation" style="animation-delay: 0.5s;">
+                    <i class="fas fa-shield-alt text-5xl mb-4 text-indigo-300"></i>
+                    <h3 class="text-xl font-bold mb-2">Безопасность</h3>
+                    <p class="text-indigo-200">Страхование и поддержка 24/7</p>
+                </div>
+                <div class="p-6 float-animation" style="animation-delay: 1s;">
+                    <i class="fas fa-tags text-5xl mb-4 text-indigo-300"></i>
+                    <h3 class="text-xl font-bold mb-2">Лучшие цены</h3>
+                    <p class="text-indigo-200">Гарантия низкой цены и эксклюзивные скидки</p>
+                </div>
+                <div class="p-6 float-animation" style="animation-delay: 1.5s;">
+                    <i class="fas fa-headset text-5xl mb-4 text-indigo-300"></i>
+                    <h3 class="text-xl font-bold mb-2">Поддержка</h3>
+                    <p class="text-indigo-200">Персональный менеджер для каждого клиента</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section id="tours" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div>
+                <span class="text-indigo-600 font-semibold tracking-wider uppercase text-sm">Специальные предложения</span>
+                <h2 class="font-display text-4xl font-bold text-gray-900 mt-3">Горящие туры</h2>
+            </div>
+            <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-800 mt-4 md:mt-0">Смотреть все →</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col md:flex-row card-hover transition duration-300">
+                <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full md:w-48 h-48 md:h-auto object-cover">
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Мальдивы All Inclusive</h3>
+                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">-30%</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">7 ночей в отеле 5* с вылетом из Москвы</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-calendar-alt mr-2"></i> 15-22 декабря
+                            <span class="mx-2">•</span>
+                            <i class="fas fa-plane mr-2"></i> Прямой перелет
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-gray-400 line-through text-sm">$3,200</span>
+                            <p class="text-2xl font-bold text-red-500">$2,240</p>
+                        </div>
+                        <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">Забронировать</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col md:flex-row card-hover transition duration-300">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full md:w-48 h-48 md:h-auto object-cover">
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Тоскана, Италия</h3>
+                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">-25%</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Винный тур с проживанием в вилле</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-calendar-alt mr-2"></i> 10-17 ноября
+                            <span class="mx-2">•</span>
+                            <i class="fas fa-users mr-2"></i> Групповой тур
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-gray-400 line-through text-sm">$1,800</span>
+                            <p class="text-2xl font-bold text-red-500">$1,350</p>
+                        </div>
+                        <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">Забронировать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-20 px-4">
+        <div class="max-w-4xl mx-auto bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-8 md:p-16 text-center text-white shadow-2xl">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Получайте лучшие предложения первыми!</h2>
+            <p class="text-indigo-100 mb-8 text-lg">Подпишитесь на нашу рассылку и получите скидку 10% на первое бронирование</p>
+            <form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
+                <input type="email" placeholder="Ваш email адрес" class="flex-1 px-6 py-4 rounded-full text-gray-800 outline-none focus:ring-4 focus:ring-white/30">
+                <button type="submit" class="bg-gray-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition">Подписаться</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-compass text-3xl text-indigo-400 mr-2"></i>
+                        <span class="font-display text-2xl font-bold">Wanderlust</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Мы помогаем путешественникам находить лучшие места и создавать незабываемые воспоминания с 2010 года.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Компания</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">О нас</a></li>
+                        <li><a href="#" class="hover:text-white transition">Карьера</a></li>
+                        <li><a href="#" class="hover:text-white transition">Блог</a></li>
+                        <li><a href="#" class="hover:text-white transition">Пресса</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Поддержка</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Центр помощи</a></li>
+                        <li><a href="#" class="hover:text-white transition">Контакты</a></li>
+                        <li><a href="#" class="hover:text-white transition">Политика конфиденциальности</a></li>
+                        <li><a href="#" class="hover:text-white transition">Условия использования</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Контакты</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i> +7 (800) 555-35-35</li>
+                        <li><i class="fas fa-envelope mr-2"></i> info@wanderlust.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Москва, ул. Путешествий, 1</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2024 Wanderlust. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
