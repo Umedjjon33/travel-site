@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тайланд кай Мерем Акачон</title>
+    <title>Путеводитель по миру — Туристический гид</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -15,15 +15,12 @@
             font-family: 'Playfair Display', serif;
         }
         .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('image.jpeg');
+            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url('image.jpeg');
             background-size: cover;
             background-position: center;
         }
-        .card-hover:hover {
-            transform: translateY(-8px);
-        }
         .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -40,8 +37,12 @@
         .destination-card:hover img {
             transform: scale(1.1);
         }
-        .search-input:focus {
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -49,6 +50,12 @@
         }
         .float-animation {
             animation: float 3s ease-in-out infinite;
+        }
+        .tip-card {
+            transition: transform 0.3s ease;
+        }
+        .tip-card:hover {
+            transform: translateY(-4px);
         }
     </style>
 </head>
@@ -59,19 +66,29 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center">
-                    <i class="fas fa-compass text-3xl text-indigo-600 mr-2"></i>
-                    <span class="font-display text-2xl font-bold text-gray-900">Тайланд кай Мерем Акачон</span>
+                    <i class="fas fa-globe-americas text-3xl text-sky-600 mr-2"></i>
+                    <span class="font-display text-2xl font-bold text-gray-900">Путеводитель</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#destinations" class="text-gray-700 hover:text-indigo-600 font-medium transition">Направления</a>
-                    <a href="#tours" class="text-gray-700 hover:text-indigo-600 font-medium transition">Туры</a>
-                    <a href="#hotels" class="text-gray-700 hover:text-indigo-600 font-medium transition">Отели</a>
-                    <a href="#about" class="text-gray-700 hover:text-indigo-600 font-medium transition">О нас</a>
+                    <a href="#destinations" class="text-gray-700 hover:text-sky-600 font-medium transition">Направления</a>
+                    <a href="#guides" class="text-gray-700 hover:text-sky-600 font-medium transition">Гиды</a>
+                    <a href="#tips" class="text-gray-700 hover:text-sky-600 font-medium transition">Советы</a>
+                    <a href="#about" class="text-gray-700 hover:text-sky-600 font-medium transition">О проекте</a>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <button class="text-gray-700 hover:text-indigo-600"><i class="fas fa-search text-lg"></i></button>
-                    <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition font-medium">Войти</button>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-sky-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
                 </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 border-t border-gray-100">
+            <div class="px-4 py-3 space-y-2">
+                <a href="#destinations" class="block py-2 text-gray-700 hover:text-sky-600 font-medium">Направления</a>
+                <a href="#guides" class="block py-2 text-gray-700 hover:text-sky-600 font-medium">Гиды</a>
+                <a href="#tips" class="block py-2 text-gray-700 hover:text-sky-600 font-medium">Советы</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-sky-600 font-medium">О проекте</a>
             </div>
         </div>
     </nav>
@@ -79,40 +96,18 @@
     <!-- Hero Section -->
     <section class="hero-bg h-screen flex items-center justify-center relative">
         <div class="text-center text-white px-4 max-w-5xl mx-auto">
+            <p class="text-sky-300 uppercase tracking-widest text-sm font-semibold mb-4">Туристический путеводитель</p>
             <h1 class="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                Чихелай ака
+                Откройте для себя мир
             </h1>
-            <p class="text-xl md:text-2xl mb-10 text-gray-200 font-light">
-                Исследуйте неизведанные уголки мира с комфортом и стилем
+            <p class="text-xl md:text-2xl mb-10 text-gray-200 font-light max-w-3xl mx-auto">
+                Лучшие направления, полезные советы и вдохновение для ваших путешествий
             </p>
-            
-            <!-- Search Box -->
-            <div class="bg-white rounded-2xl p-4 shadow-2xl max-w-4xl mx-auto transform hover:scale-105 transition duration-300">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div class="relative">
-                        <i class="fas fa-map-marker-alt absolute left-4 top-4 text-gray-400"></i>
-                        <input type="text" placeholder="Куда хотите поехать?" class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 search-input outline-none text-gray-800">
-                    </div>
-                    <div class="relative">
-                        <i class="fas fa-calendar absolute left-4 top-4 text-gray-400"></i>
-                        <input type="text" placeholder="Дата заезда" onfocus="(this.type='date')" class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 search-input outline-none text-gray-800">
-                    </div>
-                    <div class="relative">
-                        <i class="fas fa-user absolute left-4 top-4 text-gray-400"></i>
-                        <select class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 search-input outline-none text-gray-800 appearance-none bg-white">
-                            <option>1 путешественник</option>
-                            <option>2 путешественника</option>
-                            <option>Семья</option>
-                            <option>Группа</option>
-                        </select>
-                    </div>
-                    <button class="bg-indigo-600 text-white py-3 rounded-xl hover:bg-indigo-700 transition font-semibold text-lg flex items-center justify-center gap-2">
-                        <i class="fas fa-search"></i> Найти
-                    </button>
-                </div>
-            </div>
+            <a href="#destinations" class="inline-flex items-center gap-3 bg-sky-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-sky-700 transition shadow-lg hover:shadow-xl">
+                <i class="fas fa-compass"></i> Исследовать направления
+            </a>
         </div>
-        
+
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
             <i class="fas fa-chevron-down text-white text-3xl"></i>
         </div>
@@ -121,64 +116,60 @@
     <!-- Popular Destinations -->
     <section id="destinations" class="py-20 px-4 max-w-7xl mx-auto">
         <div class="text-center mb-16">
-            <span class="text-indigo-600 font-semibold tracking-wider uppercase text-sm">Популярные направления</span>
-            <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 mt-3">Лучшие места для отдыха</h2>
-            <p class="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">Выберите идеальное направление из нашей подборки самых посещаемых мест этого года</p>
+            <span class="text-sky-600 font-semibold tracking-wider uppercase text-sm">Популярные направления</span>
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 mt-3">Куда поехать</h2>
+            <p class="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">Подборка самых интересных мест для путешествий — от древних храмов до тропических островов</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Card 1 -->
-            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
-                <div class="relative h-80 overflow-hidden rounded-3xl">
-                    <img src="image.jpeg" alt="Kyoto" class="w-full h-full object-cover">
-                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.9
+            <!-- Card 1: Kyoto -->
+            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group card-hover">
+                <div class="relative h-72 overflow-hidden rounded-t-3xl">
+                    <img src="image.jpeg" alt="Киото, Япония" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                        <i class="fas fa-torii-gate mr-1 text-red-500"></i> Культура
                     </div>
                     <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                         <h3 class="text-white font-display text-2xl font-bold">Киото, Япония</h3>
-                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Традиционная культура</p>
+                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Страна восходящего солнца</p>
                     </div>
                 </div>
                 <div class="p-6 bg-white rounded-b-3xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">от</p>
-                            <p class="text-2xl font-bold text-indigo-600">$1,299</p>
-                        </div>
-                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
+                    <p class="text-gray-600 text-sm mb-3">Древние храмы, традиционные сады и атмосфера старой Японии. Идеально для погружения в культуру и историю Востока.</p>
+                    <div class="flex items-center text-sm text-gray-500 gap-4">
+                        <span><i class="fas fa-sun mr-1 text-amber-500"></i> Март — Май</span>
+                        <span><i class="fas fa-clock mr-1 text-sky-500"></i> 7–10 дней</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 2 -->
-            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
-                <div class="relative h-80 overflow-hidden rounded-3xl">
-                    <img src="image.jpeg" alt="Santorini" class="w-full h-full object-cover">
-                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.8
+            <!-- Card 2: Santorini -->
+            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group card-hover">
+                <div class="relative h-72 overflow-hidden rounded-t-3xl">
+                    <img src="image.jpeg" alt="Санторини, Греция" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                        <i class="fas fa-water mr-1 text-blue-500"></i> Острова
                     </div>
                     <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                         <h3 class="text-white font-display text-2xl font-bold">Санторини, Греция</h3>
-                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Романтический отдых</p>
+                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Жемчужина Эгейского моря</p>
                     </div>
                 </div>
                 <div class="p-6 bg-white rounded-b-3xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">от</p>
-                            <p class="text-2xl font-bold text-indigo-600">$1,599</p>
-                        </div>
-                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
+                    <p class="text-gray-600 text-sm mb-3">Белоснежные домики, закаты над кальдерой и вулканические пляжи. Один из самых фотогеничных островов мира.</p>
+                    <div class="flex items-center text-sm text-gray-500 gap-4">
+                        <span><i class="fas fa-sun mr-1 text-amber-500"></i> Июнь — Сент.</span>
+                        <span><i class="fas fa-clock mr-1 text-sky-500"></i> 5–7 дней</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 3 -->
-            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
-                <div class="relative h-80 overflow-hidden rounded-3xl">
-                    <img src="image.jpeg" alt="Bali" class="w-full h-full object-cover">
-                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.9
+            <!-- Card 3: Bali -->
+            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group card-hover">
+                <div class="relative h-72 overflow-hidden rounded-t-3xl">
+                    <img src="image.jpeg" alt="Бали, Индонезия" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                        <i class="fas fa-leaf mr-1 text-green-500"></i> Природа
                     </div>
                     <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                         <h3 class="text-white font-display text-2xl font-bold">Бали, Индонезия</h3>
@@ -186,235 +177,310 @@
                     </div>
                 </div>
                 <div class="p-6 bg-white rounded-b-3xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">от</p>
-                            <p class="text-2xl font-bold text-indigo-600">$899</p>
-                        </div>
-                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
+                    <p class="text-gray-600 text-sm mb-3">Рисовые террасы, древние храмы и серфинг мирового класса. Остров духовности, природы и приключений.</p>
+                    <div class="flex items-center text-sm text-gray-500 gap-4">
+                        <span><i class="fas fa-sun mr-1 text-amber-500"></i> Апр. — Окт.</span>
+                        <span><i class="fas fa-clock mr-1 text-sky-500"></i> 10–14 дней</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 4 -->
-            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
-                <div class="relative h-80 overflow-hidden rounded-3xl">
-                    <img src="image.jpeg" alt="New York" class="w-full h-full object-cover">
-                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.7
+            <!-- Card 4: Thailand -->
+            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group card-hover">
+                <div class="relative h-72 overflow-hidden rounded-t-3xl">
+                    <img src="image.jpeg" alt="Таиланд" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                        <i class="fas fa-umbrella-beach mr-1 text-orange-500"></i> Пляжи
                     </div>
                     <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                        <h3 class="text-white font-display text-2xl font-bold">Нью-Йорк, США</h3>
-                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Город мечты</p>
+                        <h3 class="text-white font-display text-2xl font-bold">Таиланд</h3>
+                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Страна улыбок</p>
                     </div>
                 </div>
                 <div class="p-6 bg-white rounded-b-3xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">от</p>
-                            <p class="text-2xl font-bold text-indigo-600">$1,199</p>
-                        </div>
-                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
+                    <p class="text-gray-600 text-sm mb-3">Бирюзовые воды, буддийские храмы и знаменитый стрит-фуд. Идеальное сочетание культуры, природы и гастрономии.</p>
+                    <div class="flex items-center text-sm text-gray-500 gap-4">
+                        <span><i class="fas fa-sun mr-1 text-amber-500"></i> Ноябрь — Март</span>
+                        <span><i class="fas fa-clock mr-1 text-sky-500"></i> 7–14 дней</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 5 -->
-            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
-                <div class="relative h-80 overflow-hidden rounded-3xl">
-                    <img src="image.jpeg" alt="Swiss Alps" class="w-full h-full object-cover">
-                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i> 5.0
+            <!-- Card 5: Swiss Alps -->
+            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group card-hover">
+                <div class="relative h-72 overflow-hidden rounded-t-3xl">
+                    <img src="image.jpeg" alt="Швейцарские Альпы" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                        <i class="fas fa-mountain mr-1 text-gray-600"></i> Горы
                     </div>
                     <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                         <h3 class="text-white font-display text-2xl font-bold">Швейцарские Альпы</h3>
-                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Горнолыжный курорт</p>
+                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Сердце Европы</p>
                     </div>
                 </div>
                 <div class="p-6 bg-white rounded-b-3xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">от</p>
-                            <p class="text-2xl font-bold text-indigo-600">$2,199</p>
-                        </div>
-                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
+                    <p class="text-gray-600 text-sm mb-3">Величественные горные пейзажи, горнолыжные трассы зимой и пешие маршруты летом. Чистый воздух и шоколад.</p>
+                    <div class="flex items-center text-sm text-gray-500 gap-4">
+                        <span><i class="fas fa-snowflake mr-1 text-blue-400"></i> Дек. — Март</span>
+                        <span><i class="fas fa-clock mr-1 text-sky-500"></i> 5–10 дней</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 6 -->
-            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
-                <div class="relative h-80 overflow-hidden rounded-3xl">
-                    <img src="image.jpeg" alt="Dubai" class="w-full h-full object-cover">
-                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.8
+            <!-- Card 6: Turkey -->
+            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group card-hover">
+                <div class="relative h-72 overflow-hidden rounded-t-3xl">
+                    <img src="image.jpeg" alt="Турция" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                        <i class="fas fa-mosque mr-1 text-teal-600"></i> История
                     </div>
                     <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                        <h3 class="text-white font-display text-2xl font-bold">Дубай, ОАЭ</h3>
-                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Роскошь и шопинг</p>
+                        <h3 class="text-white font-display text-2xl font-bold">Турция</h3>
+                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>На перекрёстке цивилизаций</p>
                     </div>
                 </div>
                 <div class="p-6 bg-white rounded-b-3xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">от</p>
-                            <p class="text-2xl font-bold text-indigo-600">$1,799</p>
-                        </div>
-                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
+                    <p class="text-gray-600 text-sm mb-3">Стамбул, Каппадокия, побережье Эгейского моря. Тысячи лет истории, потрясающая кухня и гостеприимство.</p>
+                    <div class="flex items-center text-sm text-gray-500 gap-4">
+                        <span><i class="fas fa-sun mr-1 text-amber-500"></i> Апр. — Окт.</span>
+                        <span><i class="fas fa-clock mr-1 text-sky-500"></i> 7–10 дней</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="py-20 bg-indigo-900 text-white">
+    <!-- Features / Why Travel Section -->
+    <section class="py-20 bg-sky-900 text-white">
         <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl md:text-4xl font-bold">Почему стоит путешествовать</h2>
+                <p class="text-sky-200 mt-3 text-lg">Путешествия меняют вас и расширяют горизонты</p>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
                 <div class="p-6 float-animation" style="animation-delay: 0s;">
-                    <i class="fas fa-globe-europe text-5xl mb-4 text-indigo-300"></i>
-                    <h3 class="text-xl font-bold mb-2">100+ стран</h3>
-                    <p class="text-indigo-200">Огромный выбор направлений по всему миру</p>
+                    <i class="fas fa-globe-europe text-5xl mb-4 text-sky-300"></i>
+                    <h3 class="text-xl font-bold mb-2">Новые культуры</h3>
+                    <p class="text-sky-200">Знакомство с традициями, обычаями и языками разных народов мира</p>
                 </div>
                 <div class="p-6 float-animation" style="animation-delay: 0.5s;">
-                    <i class="fas fa-shield-alt text-5xl mb-4 text-indigo-300"></i>
-                    <h3 class="text-xl font-bold mb-2">Безопасность</h3>
-                    <p class="text-indigo-200">Страхование и поддержка 24/7</p>
+                    <i class="fas fa-camera text-5xl mb-4 text-sky-300"></i>
+                    <h3 class="text-xl font-bold mb-2">Яркие впечатления</h3>
+                    <p class="text-sky-200">Незабываемые моменты и фотографии, которые останутся на всю жизнь</p>
                 </div>
                 <div class="p-6 float-animation" style="animation-delay: 1s;">
-                    <i class="fas fa-tags text-5xl mb-4 text-indigo-300"></i>
-                    <h3 class="text-xl font-bold mb-2">Лучшие цены</h3>
-                    <p class="text-indigo-200">Гарантия низкой цены и эксклюзивные скидки</p>
+                    <i class="fas fa-utensils text-5xl mb-4 text-sky-300"></i>
+                    <h3 class="text-xl font-bold mb-2">Гастрономия</h3>
+                    <p class="text-sky-200">Откройте вкусы мира — от уличной еды до ресторанов высокой кухни</p>
                 </div>
                 <div class="p-6 float-animation" style="animation-delay: 1.5s;">
-                    <i class="fas fa-headset text-5xl mb-4 text-indigo-300"></i>
-                    <h3 class="text-xl font-bold mb-2">Поддержка</h3>
-                    <p class="text-indigo-200">Персональный менеджер для каждого клиента</p>
+                    <i class="fas fa-hiking text-5xl mb-4 text-sky-300"></i>
+                    <h3 class="text-xl font-bold mb-2">Приключения</h3>
+                    <p class="text-sky-200">Треккинг, дайвинг, серфинг и другие активности для любителей адреналина</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Special Offers -->
-    <section id="tours" class="py-20 px-4 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-            <div>
-                <span class="text-indigo-600 font-semibold tracking-wider uppercase text-sm">Специальные предложения</span>
-                <h2 class="font-display text-4xl font-bold text-gray-900 mt-3">Горящие туры</h2>
-            </div>
-            <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-800 mt-4 md:mt-0">Смотреть все →</a>
+    <!-- Travel Guides -->
+    <section id="guides" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-sky-600 font-semibold tracking-wider uppercase text-sm">Путеводители</span>
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 mt-3">Гиды по направлениям</h2>
+            <p class="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">Полезная информация о популярных направлениях — что посмотреть, когда ехать, что попробовать</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col md:flex-row card-hover transition duration-300">
-                <img src="image.jpeg" class="w-full md:w-48 h-48 md:h-auto object-cover">
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-900">Мальдивы All Inclusive</h3>
-                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">-30%</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">7 ночей в отеле 5* с вылетом из Москвы</p>
-                        <div class="flex items-center text-sm text-gray-500 mb-4">
-                            <i class="fas fa-calendar-alt mr-2"></i> 15-22 декабря
-                            <span class="mx-2">•</span>
-                            <i class="fas fa-plane mr-2"></i> Прямой перелет
-                        </div>
+            <!-- Guide 1 -->
+            <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col md:flex-row card-hover">
+                <img src="image.jpeg" class="w-full md:w-56 h-48 md:h-auto object-cover">
+                <div class="p-6 flex-1">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="bg-sky-100 text-sky-700 text-xs px-3 py-1 rounded-full font-medium">Азия</span>
+                        <span class="bg-amber-100 text-amber-700 text-xs px-3 py-1 rounded-full font-medium">Пляжный</span>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <span class="text-gray-400 line-through text-sm">$3,200</span>
-                            <p class="text-2xl font-bold text-red-500">$2,240</p>
-                        </div>
-                        <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">Забронировать</button>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Таиланд: полный гид для путешественника</h3>
+                    <p class="text-gray-600 text-sm mb-4">Лучшие острова, храмы Бангкока, национальные парки севера. Узнайте, как спланировать идеальную поездку в Таиланд.</p>
+                    <div class="flex items-center text-sm text-gray-500 gap-4">
+                        <span><i class="fas fa-thermometer-half mr-1 text-red-400"></i> +28..+35 °C</span>
+                        <span><i class="fas fa-language mr-1 text-sky-500"></i> Тайский</span>
+                        <span><i class="fas fa-money-bill mr-1 text-green-500"></i> Бат (THB)</span>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col md:flex-row card-hover transition duration-300">
-                <img src="image.jpeg" class="w-full md:w-48 h-48 md:h-auto object-cover">
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-900">Тоскана, Италия</h3>
-                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">-25%</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">Винный тур с проживанием в вилле</p>
-                        <div class="flex items-center text-sm text-gray-500 mb-4">
-                            <i class="fas fa-calendar-alt mr-2"></i> 10-17 ноября
-                            <span class="mx-2">•</span>
-                            <i class="fas fa-users mr-2"></i> Групповой тур
-                        </div>
+            <!-- Guide 2 -->
+            <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col md:flex-row card-hover">
+                <img src="image.jpeg" class="w-full md:w-56 h-48 md:h-auto object-cover">
+                <div class="p-6 flex-1">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="bg-sky-100 text-sky-700 text-xs px-3 py-1 rounded-full font-medium">Европа</span>
+                        <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">Культурный</span>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <span class="text-gray-400 line-through text-sm">$1,800</span>
-                            <p class="text-2xl font-bold text-red-500">$1,350</p>
-                        </div>
-                        <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">Забронировать</button>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Италия: от Рима до Амальфи</h3>
+                    <p class="text-gray-600 text-sm mb-4">Колизей, каналы Венеции, побережье Амальфи и тосканские виноградники. Маршруты на любой вкус и бюджет.</p>
+                    <div class="flex items-center text-sm text-gray-500 gap-4">
+                        <span><i class="fas fa-thermometer-half mr-1 text-red-400"></i> +15..+30 °C</span>
+                        <span><i class="fas fa-language mr-1 text-sky-500"></i> Итальянский</span>
+                        <span><i class="fas fa-money-bill mr-1 text-green-500"></i> Евро (EUR)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guide 3 -->
+            <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col md:flex-row card-hover">
+                <img src="image.jpeg" class="w-full md:w-56 h-48 md:h-auto object-cover">
+                <div class="p-6 flex-1">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="bg-sky-100 text-sky-700 text-xs px-3 py-1 rounded-full font-medium">Азия</span>
+                        <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Природа</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Бали: остров богов и рисовых террас</h3>
+                    <p class="text-gray-600 text-sm mb-4">Убуд, храм Танах Лот, водопады и вулкан Агунг. Практические советы по транспорту и проживанию.</p>
+                    <div class="flex items-center text-sm text-gray-500 gap-4">
+                        <span><i class="fas fa-thermometer-half mr-1 text-red-400"></i> +27..+33 °C</span>
+                        <span><i class="fas fa-language mr-1 text-sky-500"></i> Индонезийский</span>
+                        <span><i class="fas fa-money-bill mr-1 text-green-500"></i> Рупия (IDR)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guide 4 -->
+            <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col md:flex-row card-hover">
+                <img src="image.jpeg" class="w-full md:w-56 h-48 md:h-auto object-cover">
+                <div class="p-6 flex-1">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="bg-sky-100 text-sky-700 text-xs px-3 py-1 rounded-full font-medium">Ближний Восток</span>
+                        <span class="bg-rose-100 text-rose-700 text-xs px-3 py-1 rounded-full font-medium">История</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Турция: Стамбул и Каппадокия</h3>
+                    <p class="text-gray-600 text-sm mb-4">Голубая мечеть, полёты на воздушных шарах, античные руины и турецкий хаммам. Всё, что нужно знать.</p>
+                    <div class="flex items-center text-sm text-gray-500 gap-4">
+                        <span><i class="fas fa-thermometer-half mr-1 text-red-400"></i> +10..+30 °C</span>
+                        <span><i class="fas fa-language mr-1 text-sky-500"></i> Турецкий</span>
+                        <span><i class="fas fa-money-bill mr-1 text-green-500"></i> Лира (TRY)</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
+    <!-- Travel Tips -->
+    <section id="tips" class="py-20 px-4 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-sky-600 font-semibold tracking-wider uppercase text-sm">Полезные советы</span>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 mt-3">Советы путешественникам</h2>
+                <p class="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">Практические рекомендации, которые помогут сделать вашу поездку комфортной и безопасной</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-md tip-card">
+                    <div class="w-14 h-14 bg-sky-100 rounded-2xl flex items-center justify-center mb-5">
+                        <i class="fas fa-suitcase-rolling text-2xl text-sky-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Как собрать чемодан</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Берите универсальную одежду, которую легко комбинировать. Скрутите вещи в рулоны для экономии места. Не забудьте аптечку и копии документов.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-md tip-card">
+                    <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-5">
+                        <i class="fas fa-passport text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Документы и визы</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Проверьте срок действия паспорта заранее. Изучите визовые требования страны назначения. Сохраните электронные копии всех документов в облаке.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-md tip-card">
+                    <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-5">
+                        <i class="fas fa-shield-alt text-2xl text-amber-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Безопасность в поездке</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Оформите медицинскую страховку. Не носите все деньги в одном месте. Сообщите близким маршрут и оставьте контакты отеля.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-md tip-card">
+                    <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-5">
+                        <i class="fas fa-coins text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Экономия в путешествии</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Бронируйте жильё заранее. Ешьте там, где едят местные. Пользуйтесь общественным транспортом — это и дешевле, и интереснее.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-md tip-card">
+                    <div class="w-14 h-14 bg-rose-100 rounded-2xl flex items-center justify-center mb-5">
+                        <i class="fas fa-heartbeat text-2xl text-rose-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Здоровье в дороге</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Пейте бутилированную воду в тропиках. Используйте солнцезащитный крем. Возьмите с собой базовые лекарства и средства от комаров.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-md tip-card">
+                    <div class="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center mb-5">
+                        <i class="fas fa-wifi text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Связь за границей</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Купите местную SIM-карту или используйте eSIM. Скачайте офлайн-карты заранее. Узнайте про бесплатный Wi-Fi в отелях и кафе.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspiration Quote -->
     <section class="py-20 px-4">
-        <div class="max-w-4xl mx-auto bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-8 md:p-16 text-center text-white shadow-2xl">
-            <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Получайте лучшие предложения первыми!</h2>
-            <p class="text-indigo-100 mb-8 text-lg">Подпишитесь на нашу рассылку и получите скидку 10% на первое бронирование</p>
-            <form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
-                <input type="email" placeholder="Ваш email адрес" class="flex-1 px-6 py-4 rounded-full text-gray-800 outline-none focus:ring-4 focus:ring-white/30">
-                <button type="submit" class="bg-gray-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition">Подписаться</button>
-            </form>
+        <div class="max-w-4xl mx-auto bg-gradient-to-r from-sky-600 to-blue-700 rounded-3xl p-8 md:p-16 text-center text-white shadow-2xl">
+            <i class="fas fa-quote-left text-4xl text-sky-300 mb-6"></i>
+            <blockquote class="font-display text-2xl md:text-3xl font-bold mb-6 leading-relaxed">
+                Мир — это книга, и те, кто не путешествуют, читают лишь одну страницу.
+            </blockquote>
+            <p class="text-sky-200 text-lg">— Святой Августин</p>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
+    <!-- About / Footer -->
+    <footer id="about" class="bg-gray-900 text-white pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center mb-4">
-                        <i class="fas fa-compass text-3xl text-indigo-400 mr-2"></i>
-                        <span class="font-display text-2xl font-bold">Тайланд кай Мерем Акачон</span>
+                        <i class="fas fa-globe-americas text-3xl text-sky-400 mr-2"></i>
+                        <span class="font-display text-2xl font-bold">Путеводитель</span>
                     </div>
-                    <p class="text-gray-400 mb-4">Мы помогаем путешественникам находить лучшие места и создавать незабываемые воспоминания с 2010 года.</p>
+                    <p class="text-gray-400 mb-4">Туристический гид для путешественников. Делимся лучшими направлениями, полезными советами и вдохновением для поездок по всему миру.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-sky-600 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-sky-600 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-sky-600 transition"><i class="fab fa-telegram-plane"></i></a>
                     </div>
                 </div>
                 <div>
-                    <h4 class="font-bold text-lg mb-4">Компания</h4>
+                    <h4 class="font-bold text-lg mb-4">Направления</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">О нас</a></li>
-                        <li><a href="#" class="hover:text-white transition">Карьера</a></li>
-                        <li><a href="#" class="hover:text-white transition">Блог</a></li>
-                        <li><a href="#" class="hover:text-white transition">Пресса</a></li>
+                        <li><a href="#destinations" class="hover:text-white transition">Азия</a></li>
+                        <li><a href="#destinations" class="hover:text-white transition">Европа</a></li>
+                        <li><a href="#destinations" class="hover:text-white transition">Ближний Восток</a></li>
+                        <li><a href="#destinations" class="hover:text-white transition">Южная Америка</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-lg mb-4">Поддержка</h4>
+                    <h4 class="font-bold text-lg mb-4">Полезное</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Центр помощи</a></li>
-                        <li><a href="#" class="hover:text-white transition">Контакты</a></li>
-                        <li><a href="#" class="hover:text-white transition">Политика конфиденциальности</a></li>
-                        <li><a href="#" class="hover:text-white transition">Условия использования</a></li>
+                        <li><a href="#guides" class="hover:text-white transition">Путеводители</a></li>
+                        <li><a href="#tips" class="hover:text-white transition">Советы</a></li>
+                        <li><a href="#" class="hover:text-white transition">Чек-листы</a></li>
+                        <li><a href="#" class="hover:text-white transition">Разговорники</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-lg mb-4">Контакты</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-phone mr-2"></i> +7 (800) 555-35-35</li>
-                        <li><i class="fas fa-envelope mr-2"></i> info@wanderlust.com</li>
-                        <li><i class="fas fa-map-marker-alt mr-2"></i> Москва, ул. Путешествий, 1</li>
-                    </ul>
+                    <h4 class="font-bold text-lg mb-4">О проекте</h4>
+                    <p class="text-gray-400 text-sm mb-3">Этот сайт — бесплатный туристический ресурс. Мы собираем полезную информацию для путешественников со всего мира.</p>
+                    <p class="text-gray-400 text-sm">
+                        <i class="fas fa-envelope mr-2"></i> info@travel-guide.com
+                    </p>
                 </div>
             </div>
             <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
-                <p>&copy; 2024 Тайланд кай Мерем Акачон. Все права защищены.</p>
+                <p>&copy; 2024 Путеводитель по миру. Все материалы носят информационный характер.</p>
             </div>
         </div>
     </footer>
@@ -429,6 +495,21 @@
                 navbar.classList.remove('shadow-md');
             }
         });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            // Close menu on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
