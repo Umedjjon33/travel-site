@@ -3,434 +3,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тайланд кай Мерем Акачон</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Кохи Лохути - Горный Отдых в Таджикистане</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
         }
-        .font-display {
-            font-family: 'Playfair Display', serif;
+
+        /* НАВИГАЦИЯ */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
-        .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('image.jpeg');
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c5f2d;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2c5f2d;
+        }
+
+        /* ГЛАВНЫЙ ЭКРАН */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
             background-size: cover;
             background-position: center;
-        }
-        .card-hover:hover {
-            transform: translateY(-8px);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .nav-blur {
-            backdrop-filter: blur(10px);
-        }
-        .destination-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
             position: relative;
-            overflow: hidden;
         }
-        .destination-card img {
-            transition: transform 0.5s ease;
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
         }
-        .destination-card:hover img {
-            transform: scale(1.1);
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
         }
-        .search-input:focus {
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.4s both;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
         }
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* СЕКЦИИ */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c5f2d;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: #ff6b6b;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* О НАС */
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* УСЛУГИ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #667eea;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* ГАЛЕРЕЯ */
+        .gallery {
+            background: #f8f9fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* КОНТАКТЫ */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: #e9ecef;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text h3 {
+            color: #2c5f2d;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-text p, .contact-text a {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .contact-text a:hover {
+            color: #667eea;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            min-height: 400px;
+        }
+
+        /* ФУТЕР */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #667eea;
+        }
+
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* КНОПКА НАВЕРХ */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 nav-blur bg-white/90 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
-                    <i class="fas fa-compass text-3xl text-indigo-600 mr-2"></i>
-                    <span class="font-display text-2xl font-bold text-gray-900">Тайланд кай Мерем Акачон</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#destinations" class="text-gray-700 hover:text-indigo-600 font-medium transition">Направления</a>
-                    <a href="#tours" class="text-gray-700 hover:text-indigo-600 font-medium transition">Туры</a>
-                    <a href="#hotels" class="text-gray-700 hover:text-indigo-600 font-medium transition">Отели</a>
-                    <a href="#about" class="text-gray-700 hover:text-indigo-600 font-medium transition">О нас</a>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <button class="text-gray-700 hover:text-indigo-600"><i class="fas fa-search text-lg"></i></button>
-                    <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition font-medium">Войти</button>
-                </div>
-            </div>
+    <!-- НАВИГАЦИЯ -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">🏔️ Кохи Лохути</a>
+            <ul class="nav-links">
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-bg h-screen flex items-center justify-center relative">
-        <div class="text-center text-white px-4 max-w-5xl mx-auto">
-            <h1 class="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                Чихелай ака
-            </h1>
-            <p class="text-xl md:text-2xl mb-10 text-gray-200 font-light">
-                Исследуйте неизведанные уголки мира с комфортом и стилем
-            </p>
-            
-            <!-- Search Box -->
-            <div class="bg-white rounded-2xl p-4 shadow-2xl max-w-4xl mx-auto transform hover:scale-105 transition duration-300">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div class="relative">
-                        <i class="fas fa-map-marker-alt absolute left-4 top-4 text-gray-400"></i>
-                        <input type="text" placeholder="Куда хотите поехать?" class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 search-input outline-none text-gray-800">
-                    </div>
-                    <div class="relative">
-                        <i class="fas fa-calendar absolute left-4 top-4 text-gray-400"></i>
-                        <input type="text" placeholder="Дата заезда" onfocus="(this.type='date')" class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 search-input outline-none text-gray-800">
-                    </div>
-                    <div class="relative">
-                        <i class="fas fa-user absolute left-4 top-4 text-gray-400"></i>
-                        <select class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 search-input outline-none text-gray-800 appearance-none bg-white">
-                            <option>1 путешественник</option>
-                            <option>2 путешественника</option>
-                            <option>Семья</option>
-                            <option>Группа</option>
-                        </select>
-                    </div>
-                    <button class="bg-indigo-600 text-white py-3 rounded-xl hover:bg-indigo-700 transition font-semibold text-lg flex items-center justify-center gap-2">
-                        <i class="fas fa-search"></i> Найти
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-white text-3xl"></i>
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Кохи Лохути</h1>
+            <p>Незабываемый отдых в сердце таджикских гор</p>
+            <a href="#contact" class="btn">Забронировать</a>
         </div>
     </section>
 
-    <!-- Popular Destinations -->
-    <section id="destinations" class="py-20 px-4 max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <span class="text-indigo-600 font-semibold tracking-wider uppercase text-sm">Популярные направления</span>
-            <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 mt-3">Лучшие места для отдыха</h2>
-            <p class="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">Выберите идеальное направление из нашей подборки самых посещаемых мест этого года</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Card 1 -->
-            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
-                <div class="relative h-80 overflow-hidden rounded-3xl">
-                    <img src="image.jpeg" alt="Kyoto" class="w-full h-full object-cover">
-                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.9
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                        <h3 class="text-white font-display text-2xl font-bold">Киото, Япония</h3>
-                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Традиционная культура</p>
-                    </div>
-                </div>
-                <div class="p-6 bg-white rounded-b-3xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">от</p>
-                            <p class="text-2xl font-bold text-indigo-600">$1,299</p>
-                        </div>
-                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
-                    </div>
-                </div>
+    <!-- О НАС -->
+    <section id="about" class="about">
+        <h2 class="section-title">О Нас</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Добро пожаловать в <strong>Кохи Лохути</strong> — уникальное место для тех, кто ищет гармонию с природой и аутентичный горный отдых.</p>
+                <br>
+                <p>Мы предлагаем:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li>Уютное размещение в традиционном стиле</li>
+                    <li>Экскурсии по живописным маршрутам</li>
+                    <li>Национальную кухню и гостеприимство</li>
+                    <li>Свежий горный воздух и тишину</li>
+                </ul>
             </div>
-
-            <!-- Card 2 -->
-            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
-                <div class="relative h-80 overflow-hidden rounded-3xl">
-                    <img src="image.jpeg" alt="Santorini" class="w-full h-full object-cover">
-                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.8
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                        <h3 class="text-white font-display text-2xl font-bold">Санторини, Греция</h3>
-                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Романтический отдых</p>
-                    </div>
-                </div>
-                <div class="p-6 bg-white rounded-b-3xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">от</p>
-                            <p class="text-2xl font-bold text-indigo-600">$1,599</p>
-                        </div>
-                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
-                <div class="relative h-80 overflow-hidden rounded-3xl">
-                    <img src="image.jpeg" alt="Bali" class="w-full h-full object-cover">
-                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.9
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                        <h3 class="text-white font-display text-2xl font-bold">Бали, Индонезия</h3>
-                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Тропический рай</p>
-                    </div>
-                </div>
-                <div class="p-6 bg-white rounded-b-3xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">от</p>
-                            <p class="text-2xl font-bold text-indigo-600">$899</p>
-                        </div>
-                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
-                <div class="relative h-80 overflow-hidden rounded-3xl">
-                    <img src="image.jpeg" alt="New York" class="w-full h-full object-cover">
-                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.7
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                        <h3 class="text-white font-display text-2xl font-bold">Нью-Йорк, США</h3>
-                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Город мечты</p>
-                    </div>
-                </div>
-                <div class="p-6 bg-white rounded-b-3xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">от</p>
-                            <p class="text-2xl font-bold text-indigo-600">$1,199</p>
-                        </div>
-                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
-                <div class="relative h-80 overflow-hidden rounded-3xl">
-                    <img src="image.jpeg" alt="Swiss Alps" class="w-full h-full object-cover">
-                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i> 5.0
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                        <h3 class="text-white font-display text-2xl font-bold">Швейцарские Альпы</h3>
-                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Горнолыжный курорт</p>
-                    </div>
-                </div>
-                <div class="p-6 bg-white rounded-b-3xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">от</p>
-                            <p class="text-2xl font-bold text-indigo-600">$2,199</p>
-                        </div>
-                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 6 -->
-            <div class="destination-card rounded-3xl shadow-lg cursor-pointer group">
-                <div class="relative h-80 overflow-hidden rounded-3xl">
-                    <img src="image.jpeg" alt="Dubai" class="w-full h-full object-cover">
-                    <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.8
-                    </div>
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                        <h3 class="text-white font-display text-2xl font-bold">Дубай, ОАЭ</h3>
-                        <p class="text-gray-200 mt-1"><i class="fas fa-map-marker-alt mr-2"></i>Роскошь и шопинг</p>
-                    </div>
-                </div>
-                <div class="p-6 bg-white rounded-b-3xl">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-500 text-sm">от</p>
-                            <p class="text-2xl font-bold text-indigo-600">$1,799</p>
-                        </div>
-                        <button class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">Подробнее</button>
-                    </div>
-                </div>
+            <div class="about-image">
+                📸 Здесь будет фото базы отдыха
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="py-20 bg-indigo-900 text-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-                <div class="p-6 float-animation" style="animation-delay: 0s;">
-                    <i class="fas fa-globe-europe text-5xl mb-4 text-indigo-300"></i>
-                    <h3 class="text-xl font-bold mb-2">100+ стран</h3>
-                    <p class="text-indigo-200">Огромный выбор направлений по всему миру</p>
-                </div>
-                <div class="p-6 float-animation" style="animation-delay: 0.5s;">
-                    <i class="fas fa-shield-alt text-5xl mb-4 text-indigo-300"></i>
-                    <h3 class="text-xl font-bold mb-2">Безопасность</h3>
-                    <p class="text-indigo-200">Страхование и поддержка 24/7</p>
-                </div>
-                <div class="p-6 float-animation" style="animation-delay: 1s;">
-                    <i class="fas fa-tags text-5xl mb-4 text-indigo-300"></i>
-                    <h3 class="text-xl font-bold mb-2">Лучшие цены</h3>
-                    <p class="text-indigo-200">Гарантия низкой цены и эксклюзивные скидки</p>
-                </div>
-                <div class="p-6 float-animation" style="animation-delay: 1.5s;">
-                    <i class="fas fa-headset text-5xl mb-4 text-indigo-300"></i>
-                    <h3 class="text-xl font-bold mb-2">Поддержка</h3>
-                    <p class="text-indigo-200">Персональный менеджер для каждого клиента</p>
-                </div>
+    <!-- УСЛУГИ -->
+    <section id="services">
+        <h2 class="section-title">Наши Услуги</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏡</div>
+                <h3>Проживание</h3>
+                <p>Комфортабельные номера с видом на горы. Все удобства включены.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🍽️</div>
+                <h3>Питание</h3>
+                <p>Традиционная таджикская кухня, приготовленная из местных продуктов.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🥾</div>
+                <h3>Экскурсии</h3>
+                <p>Пешие походы, конные прогулки и фототуры по живописным местам.</p>
             </div>
         </div>
     </section>
 
-    <!-- Special Offers -->
-    <section id="tours" class="py-20 px-4 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-            <div>
-                <span class="text-indigo-600 font-semibold tracking-wider uppercase text-sm">Специальные предложения</span>
-                <h2 class="font-display text-4xl font-bold text-gray-900 mt-3">Горящие туры</h2>
-            </div>
-            <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-800 mt-4 md:mt-0">Смотреть все →</a>
+    <!-- ГАЛЕРЕЯ -->
+    <section id="gallery" class="gallery">
+        <h2 class="section-title">Галерея</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">📷 Фото 1</div>
+            <div class="gallery-item">📷 Фото 2</div>
+            <div class="gallery-item">📷 Фото 3</div>
+            <div class="gallery-item">📷 Фото 4</div>
         </div>
+    </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col md:flex-row card-hover transition duration-300">
-                <img src="image.jpeg" class="w-full md:w-48 h-48 md:h-auto object-cover">
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-900">Мальдивы All Inclusive</h3>
-                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">-30%</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">7 ночей в отеле 5* с вылетом из Москвы</p>
-                        <div class="flex items-center text-sm text-gray-500 mb-4">
-                            <i class="fas fa-calendar-alt mr-2"></i> 15-22 декабря
-                            <span class="mx-2">•</span>
-                            <i class="fas fa-plane mr-2"></i> Прямой перелет
-                        </div>
+    <!-- КОНТАКТЫ -->
+    <section id="contact">
+        <h2 class="section-title">Контакты</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-text">
+                        <h3>Телефон 1</h3>
+                        <a href="tel:+992904008801">+992 90 400 88 01</a>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <span class="text-gray-400 line-through text-sm">$3,200</span>
-                            <p class="text-2xl font-bold text-red-500">$2,240</p>
-                        </div>
-                        <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">Забронировать</button>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-text">
+                        <h3>Телефон 2</h3>
+                        <a href="tel:+992937845555">+992 93 784 55 55</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-text">
+                        <h3>Адрес</h3>
+                        <p>Кохи Лохути, Таджикистан</p>
                     </div>
                 </div>
             </div>
-
-            <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col md:flex-row card-hover transition duration-300">
-                <img src="image.jpeg" class="w-full md:w-48 h-48 md:h-auto object-cover">
-                <div class="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-900">Тоскана, Италия</h3>
-                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">-25%</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">Винный тур с проживанием в вилле</p>
-                        <div class="flex items-center text-sm text-gray-500 mb-4">
-                            <i class="fas fa-calendar-alt mr-2"></i> 10-17 ноября
-                            <span class="mx-2">•</span>
-                            <i class="fas fa-users mr-2"></i> Групповой тур
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <span class="text-gray-400 line-through text-sm">$1,800</span>
-                            <p class="text-2xl font-bold text-red-500">$1,350</p>
-                        </div>
-                        <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">Забронировать</button>
-                    </div>
-                </div>
+            <div class="map-placeholder">
+                🗺️ Здесь будет карта
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="py-20 px-4">
-        <div class="max-w-4xl mx-auto bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-8 md:p-16 text-center text-white shadow-2xl">
-            <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Получайте лучшие предложения первыми!</h2>
-            <p class="text-indigo-100 mb-8 text-lg">Подпишитесь на нашу рассылку и получите скидку 10% на первое бронирование</p>
-            <form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
-                <input type="email" placeholder="Ваш email адрес" class="flex-1 px-6 py-4 rounded-full text-gray-800 outline-none focus:ring-4 focus:ring-white/30">
-                <button type="submit" class="bg-gray-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition">Подписаться</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <div>
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-compass text-3xl text-indigo-400 mr-2"></i>
-                        <span class="font-display text-2xl font-bold">Тайланд кай Мерем Акачон</span>
-                    </div>
-                    <p class="text-gray-400 mb-4">Мы помогаем путешественникам находить лучшие места и создавать незабываемые воспоминания с 2010 года.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Компания</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">О нас</a></li>
-                        <li><a href="#" class="hover:text-white transition">Карьера</a></li>
-                        <li><a href="#" class="hover:text-white transition">Блог</a></li>
-                        <li><a href="#" class="hover:text-white transition">Пресса</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Поддержка</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Центр помощи</a></li>
-                        <li><a href="#" class="hover:text-white transition">Контакты</a></li>
-                        <li><a href="#" class="hover:text-white transition">Политика конфиденциальности</a></li>
-                        <li><a href="#" class="hover:text-white transition">Условия использования</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Контакты</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-phone mr-2"></i> +7 (800) 555-35-35</li>
-                        <li><i class="fas fa-envelope mr-2"></i> info@wanderlust.com</li>
-                        <li><i class="fas fa-map-marker-alt mr-2"></i> Москва, ул. Путешествий, 1</li>
-                    </ul>
-                </div>
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="footer-content">
+            <h2>Кохи Лохути</h2>
+            <p>Ваш идеальный отдых в горах Таджикистана</p>
+            <div class="social-links">
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Telegram">✈️</a>
             </div>
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
-                <p>&copy; 2024 Тайланд кай Мерем Акачон. Все права защищены.</p>
-            </div>
+            <p>&copy; 2026 Кохи Лохути. Все права защищены.</p>
         </div>
     </footer>
 
+    <!-- КНОПКА НАВЕРХ -->
+    <div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+
     <script>
-        // Navbar scroll effect
+        // Показать/скрыть кнопку наверх
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md');
+            const scrollTop = document.querySelector('.scroll-top');
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('visible');
             } else {
-                navbar.classList.remove('shadow-md');
+                scrollTop.classList.remove('visible');
             }
         });
 
-        // Smooth scroll
+        // Плавная прокрутка для ссылок
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -441,5 +531,6 @@
             });
         });
     </script>
+
 </body>
 </html>
